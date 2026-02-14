@@ -1,7 +1,7 @@
 <manifest>
   <control namespace="JB.ConsentBasedPhoneSMSControl" 
            constructor="ConsentBasedPhoneSmsControl" 
-           version="0.20260214.16"
+           version="0.20260214.17"
            display-name-key="ConsentBasedPhoneSmsControl" 
            description-key="ConsentBasedPhoneSmsControl PCF" 
            control-type="virtual" > 

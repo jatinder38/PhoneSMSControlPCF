@@ -100,18 +100,6 @@ export const ConsentBasedPhoneSmsComponent = (props: ICallSmsProps) => {
                     type="tel"
                 />
                 
-                {!props.hidePhone && localValue && (
-                    <Button 
-                        className={styles.actionButton}
-                        icon={isHoveringPhone ? <Call20Filled /> : <Call20Regular />} 
-                        onMouseEnter={() => setIsHoveringPhone(true)}
-                        onMouseLeave={() => setIsHoveringPhone(false)}
-                        onClick={props.onPhoneClick}
-                        title="Call"
-                        disabled={props.isDisabled}
-                    />
-                )}
-                
                 {!props.hideSMS && localValue && (
                     <Button 
                         className={styles.actionButton}
@@ -123,6 +111,18 @@ export const ConsentBasedPhoneSmsComponent = (props: ICallSmsProps) => {
                         disabled={props.isDisabled}
                     />
                 )}
+
+                {!props.hidePhone && localValue && (
+                    <Button 
+                        className={styles.actionButton}
+                        icon={isHoveringPhone ? <Call20Filled /> : <Call20Regular />} 
+                        onMouseEnter={() => setIsHoveringPhone(true)}
+                        onMouseLeave={() => setIsHoveringPhone(false)}
+                        onClick={props.onPhoneClick}
+                        title="Call"
+                        disabled={props.isDisabled}
+                    />
+                )}                
             </div>
         </FluentProvider>
     );
