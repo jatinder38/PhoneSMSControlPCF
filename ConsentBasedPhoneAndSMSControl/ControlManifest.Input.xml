@@ -1,7 +1,7 @@
 <manifest>
   <control namespace="JSB"
            constructor="ConsentBasedPhoneAndSMSControl" 
-           version="0.20260214.19"
+           version="0.20260214.20"
            display-name-key="ConsentBasedPhoneAndSMSControl" 
            description-key="PCF control to enable the phone call or SMS features based on the consent column value(s)" 
            control-type="virtual" > 
