@@ -1,9 +1,9 @@
 <manifest>
-  <control namespace="JB.ConsentBasedPhoneSMSControl" 
-           constructor="ConsentBasedPhoneSmsControl" 
-           version="0.20260214.17"
-           display-name-key="ConsentBasedPhoneSmsControl" 
-           description-key="ConsentBasedPhoneSmsControl PCF" 
+  <control namespace="JSB"
+           constructor="ConsentBasedPhoneAndSMSControl" 
+           version="0.20260214.19"
+           display-name-key="ConsentBasedPhoneAndSMSControl" 
+           description-key="PCF control to enable the phone call or SMS features based on the consent column value(s)" 
            control-type="virtual" > 
     <external-service-usage enabled="false" />
     <!--Phone Field-->

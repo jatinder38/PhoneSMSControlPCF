@@ -63,7 +63,7 @@ export interface ICallSmsProps {
     onChange: (newValue: string) => void;
 }
 
-export const ConsentBasedPhoneSmsComponent = (props: ICallSmsProps) => {
+export const ConsentBasedPhoneAndSMSComponent = (props: ICallSmsProps) => {
     const styles = useStyles();
     const [localValue, setLocalValue] = React.useState(props.phoneNumber || "");
     const [isHoveringPhone, setIsHoveringPhone] = React.useState(false);

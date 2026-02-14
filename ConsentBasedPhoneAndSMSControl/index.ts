@@ -1,8 +1,8 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from 'react';
-import { ConsentBasedPhoneSmsComponent, ICallSmsProps } from "./ConsentBasedPhoneSmsComponent";
+import { ConsentBasedPhoneAndSMSComponent, ICallSmsProps } from "./ConsentBasedPhoneAndSMSComponent";
 
-export class ConsentBasedPhoneSmsControl implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class ConsentBasedPhoneAndSMSControl implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private _notifyOutputChanged: () => void;
     private _currentValue: string | null;
 
@@ -51,7 +51,7 @@ export class ConsentBasedPhoneSmsControl implements ComponentFramework.ReactCont
             }
         };
 
-        return React.createElement(ConsentBasedPhoneSmsComponent, props);
+        return React.createElement(ConsentBasedPhoneAndSMSComponent, props);
     }
 
     public getOutputs(): IOutputs {
