@@ -1,16 +1,19 @@
 <manifest>
   <control namespace="JB.ConsentBasedPhoneSMSControl" 
            constructor="ConsentBasedPhoneSmsControl" 
-           version="0.20260214.12"
+           version="0.20260214.16"
            display-name-key="ConsentBasedPhoneSmsControl" 
            description-key="ConsentBasedPhoneSmsControl PCF" 
            control-type="virtual" > 
     <external-service-usage enabled="false" />
+    <!--Phone Field-->
     <property name="phoneNumber" display-name-key="Phone Number" of-type="SingleLine.Phone" usage="bound" required="true" />
-    <property name="doNotAllowPhone" display-name-key="Do Not Allow Phone" of-type="TwoOptions" usage="input" required="true" />
-    <property name="doNotAllowSMS" display-name-key="Do Not Allow SMS" of-type="TwoOptions" usage="input" required="false" /> 
-    <property name="useMasking" display-name-key="Enable Masking" description-key="Turn phone masking on or off" of-type="TwoOptions" usage="input" required="true" />
-    <property name="placeholderText" display-name-key="Placeholder" description-key="Placeholder text for column" of-type="SingleLine.Text" usage="input" required="false" />
+    <!--Consent Fields-->
+    <property name="doNotAllowPhone" display-name-key="Do Not Allow Phone" description-key="Enable Phone feature based on consent" of-type="TwoOptions" usage="input" required="true" />
+    <property name="doNotAllowSMS" display-name-key="Do Not Allow SMS" description-key="Enable SMS feature based on consent" of-type="TwoOptions" usage="input" required="false" />
+    <!--Features-->
+    <property name="placeholderText" display-name-key="Placeholder Text" description-key="Enable placeholder text for this column" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="useFormatting" display-name-key="Use Formatting" description-key="Enable phone number formatting" of-type="TwoOptions" usage="input" required="true" />
     <resources>
       <code path="index.ts" order="1" />
       <platform-library name="React" version="16.14.0" />

@@ -27,11 +27,11 @@ const useStyles = makeStyles({
         flexGrow: 1,
         backgroundColor: '#f5f5f5',
         '& .fui-Input__main': {
-        backgroundColor: '#f5f5f5',
-        ...shorthands.border('0px'),
+            backgroundColor: '#f5f5f5',
+            ...shorthands.border('0px'),
         },
         '& input': {
-        color: '#424242',
+            color: '#424242',
         }
     },
     actionButton: {
@@ -51,48 +51,38 @@ const useStyles = makeStyles({
     }
 });
 
-export interface IPhoneSmsProps {
+export interface ICallSmsProps {
     phoneNumber: string;
     placeholder: string;
     hidePhone: boolean; 
     hideSMS: boolean;   
     isDisabled: boolean; 
-    useMasking: boolean;
+    useFormatting: boolean;
     onPhoneClick: () => void;
     onSmsClick: () => void;
     onChange: (newValue: string) => void;
 }
 
-export const ConsentBasedPhoneSmsComponent = (props: IPhoneSmsProps) => {
+export const ConsentBasedPhoneSmsComponent = (props: ICallSmsProps) => {
     const styles = useStyles();
-    const inputRef = React.useRef<HTMLInputElement>(null);
-    const cursorRef = React.useRef<number | null>(null);
-    
+    const [localValue, setLocalValue] = React.useState(props.phoneNumber || "");
     const [isHoveringPhone, setIsHoveringPhone] = React.useState(false);
     const [isHoveringSms, setIsHoveringSms] = React.useState(false);
 
-    // Restore cursor position after formatting
-    React.useLayoutEffect(() => {
-        if (inputRef.current && cursorRef.current !== null) {
-            inputRef.current.setSelectionRange(cursorRef.current, cursorRef.current);
-            cursorRef.current = null;
-        }
-    });
+    React.useEffect(() => {
+        setLocalValue(props.phoneNumber);
+    }, [props.phoneNumber]);
 
     const handleChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { value: string }) => {
-    const inputElement = ev.target as HTMLInputElement;
-    const selectionStart = inputElement.selectionStart || 0;
-    const oldValue = props.phoneNumber;
-    const newValue = data.value;
-        if (props.useMasking) {
-            const formatted = new AsYouType().input(newValue);
-            const diff = formatted.length - newValue.length;
-            cursorRef.current = selectionStart + diff;            
+        setLocalValue(data.value);
+        props.onChange(data.value);
+    };
+
+    const handleBlur = () => {
+        if (props.useFormatting && localValue) {
+            const formatted = new AsYouType().input(localValue);
+            setLocalValue(formatted);
             props.onChange(formatted);
-        } 
-        else {
-            cursorRef.current = selectionStart;
-            props.onChange(newValue);
         }
     };
 
@@ -100,19 +90,19 @@ export const ConsentBasedPhoneSmsComponent = (props: IPhoneSmsProps) => {
         <FluentProvider theme={webLightTheme} style={{ background: 'transparent', width: '100%' }}>
             <div className={styles.container}>
                 <Input 
-                    input={{ ref: inputRef }}
-                    value={props.phoneNumber} 
+                    value={localValue} 
                     disabled={props.isDisabled}
                     onChange={handleChange}
+                    onBlur={handleBlur} 
                     className={styles.input}
                     appearance="filled-lighter" 
                     placeholder={props.placeholder}
+                    type="tel"
                 />
                 
-                {!props.hidePhone && props.phoneNumber && (
+                {!props.hidePhone && localValue && (
                     <Button 
                         className={styles.actionButton}
-                        // Both icons now strictly size 20
                         icon={isHoveringPhone ? <Call20Filled /> : <Call20Regular />} 
                         onMouseEnter={() => setIsHoveringPhone(true)}
                         onMouseLeave={() => setIsHoveringPhone(false)}
@@ -122,10 +112,9 @@ export const ConsentBasedPhoneSmsComponent = (props: IPhoneSmsProps) => {
                     />
                 )}
                 
-                {!props.hideSMS && props.phoneNumber && (
+                {!props.hideSMS && localValue && (
                     <Button 
                         className={styles.actionButton}
-                        // Both icons now strictly size 20
                         icon={isHoveringSms ? <Chat20Filled /> : <Chat20Regular />} 
                         onMouseEnter={() => setIsHoveringSms(true)}
                         onMouseLeave={() => setIsHoveringSms(false)}
