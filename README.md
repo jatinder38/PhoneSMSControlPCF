@@ -24,5 +24,7 @@ Leverage the Phone and Send icons from the Fluent system for a look that is indi
 
 Real-Life Use Cases:
 1) Accidental Dialing Prevention: In a fast-paced call center or field service environment, a rep might tap a phone icon out of habit. If the customer has withdrawn consent, this control ensures the button simply isn't there to be tapped.
+   
 2) Legal "Safety Net": Instead of training staff to "look for the checkbox before calling," the system enforces the rule for them. No checkbox = No button.
+   
 3) Data Consistency (Optional): If a team needs phone numbers to look uniform (e.g., always starting with +1 or +44), the formatting can be turned on. If they prefer to type freely, it can be turned off.
