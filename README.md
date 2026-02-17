@@ -12,6 +12,7 @@ Features:
 
 5. Fluent UI Icons: Leverage the Phone and Send icons from the Fluent system for a look that is indistinguishable from first-party Microsoft controls.
 
+6. Logical Inversion Toggle: Provides a configuration setting to flip boolean triggers. This allows the control to support both "Negative Consent" (e.g., Do Not Allow SMS) and "Positive Consent" (e.g., Opted-in to SMS) architectures without code changes.
 
 Real-Life Use Cases:
 1. Accidental Dialing Prevention: In a fast-paced call center or field service environment, a rep might tap a phone icon out of habit. If the customer has withdrawn consent, this control ensures the button simply isn't there to be tapped.
